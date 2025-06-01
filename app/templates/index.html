@@ -1,0 +1,114 @@
+{% include 'base.html' %}
+
+    <div id="hero-anchor" class="anchor-spacer"></div>
+    <section id="hero" class="hero">
+        <div class="hero-bg"></div>
+
+        <div class="maple-leaves">
+            <img src="{{ url_for('static', filename='images/maple.png') }}" alt="Maple leaf" class="maple-leaf" style="top: 10%; left: 5%; width: 180px; transform: rotate(-15deg); opacity: 0.3;">
+            <img src="{{ url_for('static', filename='images/maple.png') }}" alt="Maple leaf" class="maple-leaf" style="top: 40%; left: 15%; width: 200px; transform: rotate(10deg); opacity: 0.25;">
+            <img src="{{ url_for('static', filename='images/maple.png') }}" alt="Maple leaf" class="maple-leaf" style="top: 70%; left: 8%; width: 160px; transform: rotate(-5deg); opacity: 0.2;">
+        </div>
+
+        <div class="container hero-content">
+            <div class="text">
+                <h1>Cleaning company <span>MapleNest</span></h1>
+                <p>We clean objects of any complexity in 6-9 hours</p>
+                <div class="cards">
+                    <div class="card">🏙 Appartment</div>
+                    <div class="card">🏡 House</div>
+                    <div class="card">🏬 Office </div>
+                    <div class="card"> Shopping center </div>
+                    <div class="card"> Warehouse/production </div>
+                    <div class="card"> Other </div>
+                </div>
+            </div>
+
+            <div class="form-box">
+                <h2>Do you need cleaning?</h2>
+                <p>Leave a request and we will consult you within 2 minutes!</p>
+                <form method="POST" action="/order">
+                    <select name="object-type" required>
+                        <option disabled selected>Select the type of object</option>
+                        <option value="apartment">Appartment</option>
+                        <option value="house">House</option>
+                        <option value="office">Office</option>
+                        <option value="shopping-center">Shopping center</option>
+                        <option value="warehouse">Warehouse/production</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <input type="square" name="square" placeholder="square m2" required>
+                    <select name="service" required>
+                        <option disabled selected>Select the type of service</option>
+                        <option value="furniture">Dry cleaning of furniture</option>
+                        <option value="window">Window cleaning</option>
+                        <option value="repairs">Cleaning up after repairs</option>
+                        <option value="general">General cleaning</option>
+                        <option value="disinfection">Disinfection</option>
+                        <option value="Supportive">Supportive</option>
+                    </select>
+                    <div class="form-inputs">
+                        <input class="ye" type="text" name="name" placeholder="Ім'я" required>
+                        <input type="tel" name="phone" placeholder="+1 (__) ___ __ __" required>
+                    </div>
+                    <button type="submit">Send a request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <h2>Cleaning services</h2>
+            <p>We provide professional cleaning for all types of premises:</p>
+            <div class="service-cards">
+
+            <div class="service-card">
+                <div class="icon">🛋</div>
+                <h3>Upholstery Cleaning</h3>
+                <p>Fast and thorough furniture cleaning for a fresh and cozy home.</p>
+                <a href="#" class="learn-more-btn">Learn More</a>
+            </div>
+
+            <div class="service-card">
+                <div class="icon">🪟</div>
+                <h3>Window Cleaning</h3>
+                <p>Professional window washing of any complexity for spotless clarity.</p>
+                <a href="#" class="learn-more-btn">Learn More</a>
+            </div>
+
+            <div class="service-card">
+                <div class="icon">🛠</div>
+                <h3>Post-Renovation Cleaning</h3>
+                <p>We’ll remove all construction dust and debris to restore comfort.</p>
+                <a href="#" class="learn-more-btn">Learn More</a>
+            </div>
+
+            <div class="service-card">
+                <div class="icon">🏠</div>
+                <h3>Deep Cleaning</h3>
+                <p>Detailed, full-scale cleaning to make your space shine again.</p>
+                <a href="#" class="learn-more-btn">Learn More</a>
+            </div>
+
+            <div class="service-card">
+                <div class="icon">🧴</div>
+                <h3>Disinfection</h3>
+                <p>Reliable sanitization for a healthier and safer environment.</p>
+                <a href="#" class="learn-more-btn">Learn More</a>
+            </div>
+
+            <div class="service-card">
+                <div class="icon">🧹</div>
+                <h3>Maintenance Cleaning</h3>
+                <p>Regular cleaning to keep your space tidy and fresh every day.</p>
+                <a href="#" class="learn-more-btn">Learn More</a>
+            </div>
+
+            </div>
+        </div>
+    </section>
+
+
+</body>
+</html>
