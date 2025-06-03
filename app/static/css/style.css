@@ -18,6 +18,7 @@ body {
 
 header {
   position: fixed;
+  z-index: 1000;
   top: 0;
   left: 0;
   width: 100%;
@@ -30,7 +31,9 @@ header {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  box-sizing: border-box; /* чтобы padding учитывался в ширине */
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
 }
 
 /* logo */
@@ -85,9 +88,11 @@ header {
 
 .nav {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 20px;
+  position: relative;
 }
 
 .nav nav a {
@@ -192,19 +197,19 @@ header {
 /* form-box */
 
 .form-box {
-  background: rgba(113, 80, 58, 0.301);
+  background: rgba(113, 80, 58, 0.3);
   padding: 2em;
   border-radius: 15px;
   width: 100%;
-  margin-left: 20px;
   max-width: 500px;
-  margin: 20px;
-  margin-top: 40px;
+  box-sizing: border-box;
+  margin: 40px auto 0 auto; /* зверху 40px, по боках auto (центрування) */
 }
 
 .form-box h2 {
   margin-top: 0;
   color: #fc9f48;
+  font-size: 1.8rem;
 }
 
 .form-box form {
@@ -216,20 +221,29 @@ header {
 .form-inputs {
   display: flex;
   gap: 1em;
+  flex-wrap: wrap;
 }
 
 .form-inputs input {
-  flex: 1;
+  flex: 1 1 48%; /* по 2 колонки, якщо є місце */
+  min-width: 140px; /* мінімальна ширина для інпутів */
   border-radius: 5px;
   border: 1px solid #ccc;
   box-sizing: border-box;
+  padding: 0.8em;
 }
 
 .form-box input,
 .form-box select {
-  padding: 0.8em;
   border-radius: 5px;
   border: 1px solid #ccc;
+  padding: 0.8em;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+.form-box select {
+  width: 100%;
 }
 
 .form-box button {
@@ -240,10 +254,54 @@ header {
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 1.1rem;
+  transition: background 0.3s ease;
 }
 
 .form-box button:hover {
   background: #f78d2b;
+}
+
+/* Мобільні екрани (до 480px) */
+@media (max-width: 480px) {
+  .form-inputs {
+    flex-direction: column;
+  }
+  .form-inputs input {
+    flex: 1 1 100%;
+  }
+  .form-box {
+    margin: 20px 10px;
+    padding: 1.5em 1em;
+  }
+  .form-box h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Планшети (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .form-inputs {
+    flex-wrap: nowrap;
+  }
+  .form-inputs input {
+    flex: 1 1 48%;
+  }
+  .form-box {
+    margin: 30px 15px;
+    padding: 2em 1.5em;
+  }
+  .form-box h2 {
+    font-size: 1.6rem;
+  }
+}
+
+/* Тільки для широких екранів (ПК) — зміщує трохи вліво */
+@media (min-width: 768px) {
+  .form-box {
+    margin-left: 40px;
+    margin-right: auto;
+  }
 }
 
 /* ==== close Hero Section ==== */
@@ -353,3 +411,84 @@ header {
 }
 
 /* ==== close Services Section ==== */
+
+
+/* ==== Footer ==== */
+
+/* Сховати гамбургер і мобільне меню за замовчуванням на десктопі */
+.burger {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  z-index: 1100; /* вище за шапку */
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 60px; /* починається одразу під шапкою */
+  left: 0;
+  width: 100vw;
+  height: 0;
+  background: white;
+  overflow: hidden;
+  transition: height 0.4s ease;
+  z-index: 900; /* нижче за шапку */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1em;
+}
+
+/* Відкритий стан — повна висота екрану */
+.mobile-menu.active {
+  height: calc(100vh - 60px); /* повна висота екрану без шапки */
+}
+
+/* Меню навігації — кнопки у стовпчик з відступом */
+.mobile-menu nav a {
+  display: block;
+  padding: 1em 0;
+  font-size: 1.5em;
+  color: #333;
+  text-decoration: none;
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+/* При наведенні змінюємо колір */
+.mobile-menu nav a:hover {
+  background-color: #f0f0f0;
+}
+
+/* Іконки соцмереж — нижче меню, в рядок */
+.mobile-icons {
+  margin-top: auto; /* штовхає вниз */
+  padding: 1em 0;
+  display: flex;
+  gap: 20px;
+}
+
+/* Гамбургер - як раніше */
+.burger {
+  display: none;
+  font-size: 2em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  z-index: 1001;
+}
+
+/* При мобільних екранах */
+@media (max-width: 900px) {
+  .main-nav,
+  .social-icons {
+    display: none;
+  }
+  .burger {
+    display: block;
+  }
+}

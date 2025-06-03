@@ -1,4 +1,51 @@
-{% include 'base.html' %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MapleNest</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <header>
+        <div class="container nav">
+            <div class="logo">
+                <a href="/"><img src="{{ url_for('static', filename='icons/logo.svg') }}" alt="Logo"></a>
+            </div>
+
+            <nav class="main-nav">
+                <a href="#hero-anchor">Home</a>
+                <a href="#about">About us</a>
+                <a href="#services">Services</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#contacts">Contacts</a>
+            </nav>
+
+            <div class="social-icons">
+                <a href="https://facebook.com" target="_blank"><img src="{{ url_for('static', filename='icons/facebook.svg') }}" alt="Facebook"></a>
+                <a href="https://instagram.com" target="_blank"><img src="{{ url_for('static', filename='icons/instagram.svg') }}" alt="Instagram"></a>
+                <a href="https://t.me/ваш_телеграм" target="_blank"><img src="{{ url_for('static', filename='icons/telegram.svg') }}" alt="Telegram"></a>
+            </div>
+
+            <button class="burger" id="burger">&#9776;</button>
+
+            <div class="mobile-menu" id="mobileMenu">
+                <nav>
+                    <a href="#hero-anchor">Home</a>
+                    <a href="#about">About us</a>
+                    <a href="#services">Services</a>
+                    <a href="#reviews">Reviews</a>
+                    <a href="#contacts">Contacts</a>
+                </nav>
+                <div class="mobile-icons">
+                    <a href="https://facebook.com" target="_blank"><img src="{{ url_for('static', filename='icons/facebook.svg') }}" alt="Facebook"></a>
+                    <a href="https://instagram.com" target="_blank"><img src="{{ url_for('static', filename='icons/instagram.svg') }}" alt="Instagram"></a>
+                    <a href="https://t.me/ваш_телеграм" target="_blank"><img src="{{ url_for('static', filename='icons/telegram.svg') }}" alt="Telegram"></a>
+                </div>
+            </div>
+        </div>
+    </header>
 
     <div id="hero-anchor" class="anchor-spacer"></div>
     <section id="hero" class="hero">
@@ -109,6 +156,23 @@
         </div>
     </section>
 
+    <script>
+        const burger = document.getElementById('burger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        burger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Закривати меню при кліку на посилання всередині мобільного меню
+        mobileMenu.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+            });
+        });
+    </script>
 
 </body>
 </html>
