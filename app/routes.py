@@ -18,3 +18,10 @@ def order():
     db.session.add(new_order)
     db.session.commit()
     return 'Спасибо! Мы с вами свяжемся.'
+
+@main.route('/services/<service_name>')
+def service(service_name):
+    try:
+        return render_template(f'services/{service_name}.html')
+    except:
+        return render_template('404.html'), 404

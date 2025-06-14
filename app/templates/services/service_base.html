@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/services.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section для услуги -->
+<section class="service-hero" id="service-hero">
+  <div class="service-hero__bg">
+    <img src="{{ url_for('static', filename='images/cleaning.jpg') }}" class="service-hero__bg-img" alt="">
+    <div class="blur-gradient"></div>
+  </div>
+
+
+  <div class="container">
+    <div class="service-hero__content">
+      <h1 class="service-hero__title">Apartment <span>Cleaning</span></h1>
+      <p class="service-hero__subtitle">We will thoroughly clean your apartment from dust, dirt, mold, and allergens. We'll reach those hard-to-access spots by moving furniture and appliances — places you usually don’t clean during regular housekeeping.</p>
+      <a href="#contact-form" class="service-hero__button">Book Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- Описание услуги -->
+<section class="service-details">
+  <div class="container">
+    <div class="service-details__content">
+      <h2 class="service-details__title">What is included in apartment cleaning</h2>
+      <div>
+        <button onclick="showContent('kitchen')">Кухня</button>
+        <button onclick="showContent('bathroom')">Санвузол</button>
+        <button onclick="showContent('rooms')">Кімнати і коридори</button>
+      </div>
+      <div class="service-details__grid">
+        <div class="service-details__item">
+          <p>Dust removal from walls and cobwebs</p>
+        </div>
+
+        <div class="service-details__item">
+          <p>Cleaning cornices and simple chandeliers</p>
+        </div>
+
+        <div class="service-details__item">
+          <p>Cleaning baseboards and floors (4 stages)</p>
+        </div>
+
+        <div class="service-details__item">
+          <p>Cleaning all surfaces</p>
+        </div>
+
+        <div class="service-details__item">
+          <p>Cleaning radiators</p>
+        </div>
+
+        <div class="service-details__item">
+          <p>Dusting doors, outlets, and switches</p>
+        </div>
+
+        <div class="service-details__item">
+          <p>Degreasing cabinet fronts</p>
+        </div>
+
+        <div class="service-details__item">
+          <p>Degreasing kitchen backsplash</p>
+        </div>
+
+        <div class="service-details__item">
+          <p>Cleaning the hood and stove from the outside</p>
+        </div>
+
+        <div class="service-details__item">
+          <p>Washing dishes</p>
+        </div>
+
+        <div class="service-details__item">
+          <p>Cleaning the sink and polishing the faucet</p>
+        </div>
+
+        <div class="service-details__item">
+          <p>Steam cleaning</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Процесс работы -->
+<section class="service-process">
+  <div class="container">
+    <h2 class="service-process__title">Our Cleaning Process</h2>
+    
+    <div class="service-process__steps">
+
+      <div class="service-process__step">
+        <div class="step-number">1</div>
+        <h3>Inspection</h3>
+        <p>We assess fabric type and condition to determine the best approach</p>
+      </div>
+
+      <div class="service-process__step">
+        <div class="step-number">2</div>
+        <h3>Vacuuming</h3>
+        <p>Thorough removal of surface dirt and debris</p>
+      </div>
+
+      <div class="service-process__step">
+        <div class="step-number">3</div>
+        <h3>Pre-Treatment</h3>
+        <p>Application of specialized cleaning solutions to break down stains</p>
+      </div>
+
+      <div class="service-process__step">
+        <div class="step-number">4</div>
+        <h3>Deep Cleaning</h3>
+        <p>Using professional equipment to extract dirt and allergens</p>
+      </div>
+
+      <div class="service-process__step">
+        <div class="step-number">5</div>
+        <h3>Spot Treatment</h3>
+        <p>Extra attention to stubborn stains and high-use areas</p>
+      </div>
+
+      <div class="service-process__step">
+        <div class="step-number">6</div>
+        <h3>Protection</h3>
+        <p>Application of fabric protector to repel future stains</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Форма -->
+<section class="service-contact" id="contact-form">
+  <div class="container">
+    <div class="service-contact__content">
+      <div class="service-contact__text">
+        <h2>Ready for Fresh, Clean Furniture?</h2>
+        <p>Book our professional upholstery cleaning service today and breathe new life into your furniture!</p>
+        <ul class="service-contact__benefits">
+          <li> 100% Satisfaction Guarantee</li>
+          <li> Eco-Friendly Cleaning Products</li>
+          <li> Same-Day Service Available</li>
+          <li> Licensed & Insured Professionals</li>
+        </ul>
+      </div>
+      
+      <div class="service-contact__form">
+        <form class="form">
+          <h3>Schedule Your Cleaning</h3>
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Email" required>
+          <input type="tel" placeholder="Phone Number" required>
+          <select required>
+            <option value="" disabled selected>Select Furniture Type</option>
+            <option>Sofa</option>
+            <option>Armchair</option>
+            <option>Dining Chairs</option>
+            <option>Mattress</option>
+            <option>Multiple Pieces</option>
+          </select>
+          <button type="submit">Book Now</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

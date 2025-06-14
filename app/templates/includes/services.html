@@ -1,0 +1,69 @@
+<!-- Services Section -->
+<section class="services" id="services">
+    <div class="container">
+        <div class="section-header">
+        <h2 class="section-title">Our Cleaning Services</h2>
+        <p class="section-subtitle">Professional solutions for all types of properties</p>
+        </div>
+
+        <div class="services__grid">
+
+            <div class="service-card">
+                <div class="service-card__icon">🏠</div>
+                <h3 class="service-card__title">Apartment / House</h3>
+                <p class="service-card__text">Detailed and reliable cleaning for apartments and houses — from hidden corners to high-touch surfaces.</p>
+                <a href="{{ url_for('main.service', service_name='apartment') }}" class="service-card__button">Learn More</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-card__icon">🏢</div>
+                <h3 class="service-card__title">Office</h3>
+                <p class="service-card__text">Professional and efficient cleaning to keep your workspace spotless, organized, and welcoming.</p>
+                <a href="{{ url_for('main.service', service_name='Office') }}" class="service-card__button">Learn More</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-card__icon">🛋</div>
+                <h3 class="service-card__title">Upholstery Cleaning</h3>
+                <p class="service-card__text">Fast and thorough furniture cleaning for a fresh and cozy home.</p>
+                <a href="{{ url_for('main.service', service_name='upholstery') }}" class="service-card__button">Learn More</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-card__icon">🪟</div>
+                <h3 class="service-card__title">Window Cleaning</h3>
+                <p class="service-card__text">Professional window washing of any complexity for spotless clarity.</p>
+                <a href="{{ url_for('main.service', service_name='window') }}" class="service-card__button">Learn More</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-card__icon">🛠</div>
+                <h3 class="service-card__title">Post-Renovation Cleaning</h3>
+                <p class="service-card__text">We'll remove all construction dust and debris to restore comfort.</p>
+                <a href="{{ url_for('main.service', service_name='post_renovation') }}" class="service-card__button">Learn More</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-card__icon">🏠</div>
+                <h3 class="service-card__title">Deep Cleaning</h3>
+                <p class="service-card__text">Detailed, full-scale cleaning to make your space shine again.</p>
+                <a href="{{ url_for('main.service', service_name='deep') }}" class="service-card__button">Learn More</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-card__icon">🧴</div>
+                <h3 class="service-card__title">Disinfection</h3>
+                <p class="service-card__text">Reliable sanitization for a healthier and safer environment.</p>
+                <a href="{{ url_for('main.service', service_name='disinfection') }}" class="service-card__button">Learn More</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-card__icon">🧹</div>
+                <h3 class="service-card__title">Maintenance Cleaning</h3>
+                <p class="service-card__text">Regular cleaning to keep your space tidy and fresh every day.</p>
+                <a href="{{ url_for('main.service', service_name='maintenance') }}" class="service-card__button">Learn More</a>
+            </div>
+
+        </div>
+    </div>
+</section>

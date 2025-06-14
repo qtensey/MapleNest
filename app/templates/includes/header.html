@@ -1,0 +1,35 @@
+<header class="header">
+    <div class="container">
+        <div class="header__inner">
+        <a href="/" class="logo">
+            <img src="{{ url_for('static', filename='icons/logo.svg') }}" alt="MapleNest Logo" class="logo__img">
+        </a>
+
+        <nav class="nav">
+            <a href="#hero" class="nav__link">Home</a>
+            <a href="#about" class="nav__link">About us</a>
+            <a href="#services" class="nav__link">Services</a>
+            <a href="#reviews" class="nav__link">Reviews</a>
+            <a href="#contacts" class="nav__link">Contacts</a>
+        </nav>
+
+        <div class="social">
+            <a href="https://facebook.com" target="_blank" class="social__link">
+            <img src="{{ url_for('static', filename='icons/facebook.svg') }}" alt="Facebook" class="social__icon">
+            </a>
+            <a href="https://instagram.com" target="_blank" class="social__link">
+            <img src="{{ url_for('static', filename='icons/instagram.svg') }}" alt="Instagram" class="social__icon">
+            </a>
+            <a href="https://t.me/ваш_телеграм" target="_blank" class="social__link">
+            <img src="{{ url_for('static', filename='icons/telegram.svg') }}" alt="Telegram" class="social__icon">
+            </a>
+        </div>
+
+        <button class="burger" id="burger">
+            <span class="burger__line"></span>
+            <span class="burger__line"></span>
+            <span class="burger__line"></span>
+        </button>
+        </div>
+    </div>
+</header>

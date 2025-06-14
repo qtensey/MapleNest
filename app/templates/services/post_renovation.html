@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/services.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section для услуги -->
+<section class="service-hero" id="service-hero">
+  <div class="service-hero__bg">
+    <img src="{{ url_for('static', filename='images/post_renovation.jpg') }}" class="service-hero__bg-img" alt="Post-Renovation Cleaning">
+    <div class="blur-gradient"></div>
+  </div>
+  <div class="container">
+    <div class="service-hero__content">
+      <h1 class="service-hero__title">Post-Renovation <span>Cleaning</span></h1>
+      <p class="service-hero__subtitle">After the construction work is done, let us handle the mess. Our post-renovation cleaning removes dust, debris, and residues, leaving your space fresh, clean, and move-in ready.</p>
+      <a href="#contact-form" class="service-hero__button">Book Now</a>
+    </div>
+  </div>
+</section>
+
+<section class="service-details">
+  <div class="container">
+    <h2 class="service-details__title">What is included in post-renovation cleaning</h2>
+
+    <div class="service-details__content no-tabs">
+      <img src="{{ url_for('static', filename='images/post_renovation_service.jpg') }}" class="service-img" alt="Post-Renovation Cleaning">
+
+      <div class="service-details__grid">
+        <div class="service-details__item"><p>Removal of construction dust and debris</p></div>
+        <div class="service-details__item"><p>Deep vacuuming of floors and carpets</p></div>
+        <div class="service-details__item"><p>Washing and polishing of hard floors</p></div>
+        <div class="service-details__item"><p>Wiping down walls, doors, and baseboards</p></div>
+        <div class="service-details__item"><p>Cleaning windows, frames, and sills</p></div>
+        <div class="service-details__item"><p>Cleaning light fixtures, vents, and switches</p></div>
+        <div class="service-details__item"><p>Sanitizing bathrooms and kitchens</p></div>
+        <div class="service-details__item"><p>Removing paint, glue, and sticker residue</p></div>
+        <div class="service-details__item"><p>Detailed cleaning of all surfaces and corners</p></div>
+        <div class="service-details__item"><p>Safe for new finishes and delicate surfaces</p></div>
+        <div class="service-details__item"><p>Use of industrial-grade tools and products</p></div>
+        <div class="service-details__item"><p>Final inspection and touch-up cleaning</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Form -->
+<section class="service-contact" id="contact-form">
+  <div class="container">
+    <div class="service-contact__content">
+      <div class="service-contact__text">
+        <h2>Ready for a Fresh Start?</h2>
+        <p>Book our post-renovation cleaning to enjoy your newly improved space—without the mess left behind.</p>
+        <ul class="service-contact__benefits">
+          <li> Specialized After-Construction Cleaning</li>
+          <li> Fast & Reliable Service</li>
+          <li> Advanced Equipment</li>
+          <li> Satisfaction Guaranteed</li>
+        </ul>
+      </div>
+
+      <div class="service-contact__form">
+        <form class="service-form">
+          <h3>Schedule Your Cleaning</h3>
+          <input type="text" placeholder="Your Name" required>
+          <input type="tel" placeholder="Phone Number" required>
+          <button type="submit">Book Now</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% block extra_js %}
+  <script src="{{ url_for('static', filename='js/services.js') }}"></script>
+{% endblock %}
+
+{% endblock %}

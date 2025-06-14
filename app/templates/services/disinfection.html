@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/services.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section для услуги -->
+<section class="service-hero" id="service-hero">
+  <div class="service-hero__bg">
+    <img src="{{ url_for('static', filename='images/disinfection.jpg') }}" class="service-hero__bg-img" alt="Disinfection Service">
+    <div class="blur-gradient"></div>
+  </div>
+  <div class="container">
+    <div class="service-hero__content">
+      <h1 class="service-hero__title">Professional <span>Disinfection</span></h1>
+      <p class="service-hero__subtitle">Ensure a safe and hygienic environment with our certified disinfection service. We eliminate harmful viruses, bacteria, and pathogens from your home or workplace.</p>
+      <a href="#contact-form" class="service-hero__button">Book Now</a>
+    </div>
+  </div>
+</section>
+
+<section class="service-details">
+  <div class="container">
+    <h2 class="service-details__title">What is included in disinfection service</h2>
+
+    <div class="service-details__content no-tabs">
+      <img src="{{ url_for('static', filename='images/disinfection_service.jpg') }}" class="service-img" alt="Disinfection">
+
+      <div class="service-details__grid">
+        <div class="service-details__item"><p>Full-space disinfection with certified solutions</p></div>
+        <div class="service-details__item"><p>Fogging and spray disinfection techniques</p></div>
+        <div class="service-details__item"><p>Targeted treatment of high-touch surfaces</p></div>
+        <div class="service-details__item"><p>Disinfection of desks, keyboards, phones, switches</p></div>
+        <div class="service-details__item"><p>Safe for electronics and office equipment</p></div>
+        <div class="service-details__item"><p>Bathroom and kitchen sanitization</p></div>
+        <div class="service-details__item"><p>Use of EPA/EN-certified disinfectants</p></div>
+        <div class="service-details__item"><p>Odorless and fast-drying solutions</p></div>
+        <div class="service-details__item"><p>Post-illness or precautionary disinfection</p></div>
+        <div class="service-details__item"><p>Protective gear and professional tools</p></div>
+        <div class="service-details__item"><p>Residential and commercial disinfection</p></div>
+        <div class="service-details__item"><p>Safe for children and pets after drying</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Form -->
+<section class="service-contact" id="contact-form">
+  <div class="container">
+    <div class="service-contact__content">
+      <div class="service-contact__text">
+        <h2>Protect Your Health</h2>
+        <p>Book our disinfection service today and keep your home or business safe from invisible threats.</p>
+        <ul class="service-contact__benefits">
+          <li> Certified Disinfection Specialists</li>
+          <li> Hospital-Grade Products</li>
+          <li> Suitable for Homes & Workplaces</li>
+          <li> Quick, Effective, and Discreet</li>
+        </ul>
+      </div>
+
+      <div class="service-contact__form">
+        <form class="service-form">
+          <h3>Schedule Your Cleaning</h3>
+          <input type="text" placeholder="Your Name" required>
+          <input type="tel" placeholder="Phone Number" required>
+          <button type="submit">Book Now</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% block extra_js %}
+  <script src="{{ url_for('static', filename='js/services.js') }}"></script>
+{% endblock %}
+
+{% endblock %}

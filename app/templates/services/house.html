@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/services.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section for House Cleaning -->
+<section class="service-hero" id="service-hero">
+  <div class="service-hero__bg house-bg">
+    <img src="{{ url_for('static', filename='images/house.jpg') }}" class="service-hero__bg-img" alt="Professional House Cleaning">
+    <div class="blur-gradient"></div>
+  </div>
+  <div class="container">
+    <div class="service-hero__content">
+      <h1 class="service-hero__title">Professional <span>House Cleaning</span></h1>
+      <p class="service-hero__subtitle">Transform your living space with our thorough cleaning service. We handle everything from deep cleaning to regular maintenance, ensuring your home is spotless and healthy.</p>
+      <a href="#contact-form" class="service-hero__button">Book Your Cleaning</a>
+    </div>
+  </div>
+</section>
+
+<!-- Service Details -->
+<section class="service-details">
+  <div class="container">
+    <h2 class="service-details__title">Our Comprehensive House Cleaning Services</h2>
+
+    <div class="buttons">
+      <button data-section="regular" class="btn active">Regular Cleaning</button>
+      <button data-section="deep" class="btn">Deep Cleaning</button>
+      <button data-section="move" class="btn">Move In/Out Cleaning</button>
+    </div>
+
+    <div class="service-details__content">
+      <img src="{{ url_for('static', filename='images/house-details.jpg') }}" class="service-img" alt="House Cleaning Details">
+
+      <div class="service-details__grid">
+        <!-- Regular Cleaning -->
+        <div class="service-details__item" data-section="regular">
+          <p>Dusting all surfaces and furniture</p>
+        </div>
+        <div class="service-details__item" data-section="regular">
+          <p>Vacuuming and mopping floors</p>
+        </div>
+        <div class="service-details__item" data-section="regular">
+          <p>Cleaning mirrors and glass surfaces</p>
+        </div>
+        <div class="service-details__item" data-section="regular">
+          <p>Kitchen surface cleaning</p>
+        </div>
+        <div class="service-details__item" data-section="regular">
+          <p>Bathroom sanitization</p>
+        </div>
+        <div class="service-details__item" data-section="regular">
+          <p>Emptying trash bins</p>
+        </div>
+
+        <!-- Deep Cleaning -->
+        <div class="service-details__item" data-section="deep">
+          <p>Detailed appliance cleaning</p>
+        </div>
+        <div class="service-details__item" data-section="deep">
+          <p>Inside cabinet cleaning</p>
+        </div>
+        <div class="service-details__item" data-section="deep">
+          <p>Baseboard and moldings cleaning</p>
+        </div>
+        <div class="service-details__item" data-section="deep">
+          <p>Window sill and track cleaning</p>
+        </div>
+        <div class="service-details__item" data-section="deep">
+          <p>Light fixture dusting</p>
+        </div>
+        <div class="service-details__item" data-section="deep">
+          <p>High and low dusting</p>
+        </div>
+
+        <!-- Move In/Out Cleaning -->
+        <div class="service-details__item" data-section="move">
+          <p>Complete interior cleaning</p>
+        </div>
+        <div class="service-details__item" data-section="move">
+          <p>Wall washing</p>
+        </div>
+        <div class="service-details__item" data-section="move">
+          <p>Inside oven and fridge cleaning</p>
+        </div>
+        <div class="service-details__item" data-section="move">
+          <p>Closet and storage area cleaning</p>
+        </div>
+        <div class="service-details__item" data-section="move">
+          <p>Blinds and window cleaning</p>
+        </div>
+        <div class="service-details__item" data-section="move">
+          <p>Garage/shed cleaning (optional)</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Contact Form -->
+<section class="service-contact" id="contact-form">
+  <div class="container">
+    <div class="service-contact__content">
+      <div class="service-contact__text">
+        <h2>Ready for a Spotless Home?</h2>
+        <p>Get your free estimate today and experience the difference of professional house cleaning!</p>
+        <ul class="service-contact__benefits">
+          <li>Same-day service available</li>
+          <li>No hidden fees</li>
+          <li>Customized cleaning plans</li>
+          <li>Insured and bonded professionals</li>
+        </ul>
+      </div>
+      
+      <div class="service-contact__form">
+        <form class="form">
+          <h3>Request a Free Quote</h3>
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Email" required>
+          <input type="tel" placeholder="Phone Number" required>
+          <select required>
+            <option value="" disabled selected>Service Type</option>
+            <option>Regular Cleaning</option>
+            <option>Deep Cleaning</option>
+            <option>Move In/Out Cleaning</option>
+            <option>Recurring Service</option>
+          </select>
+          <textarea placeholder="Special Requests or Notes"></textarea>
+          <button type="submit">Get Free Quote</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% block extra_js %}
+  <script src="{{ url_for('static', filename='js/services.js') }}"></script>
+{% endblock %}
+
+{% endblock %}

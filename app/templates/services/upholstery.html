@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/services.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section для услуги -->
+<section class="service-hero" id="service-hero">
+  <div class="service-hero__bg">
+    <img src="{{ url_for('static', filename='images/upholstery-bg.jpg') }}" class="service-hero__bg-img" alt="Upholstery Cleaning">
+    <div class="blur-gradient"></div>
+  </div>
+  <div class="container">
+    <div class="service-hero__content">
+      <h1 class="service-hero__title">Upholstery <span>Cleaning</span></h1>
+      <p class="service-hero__subtitle">Restore the freshness and look of your furniture with our specialized upholstery cleaning. We remove dust, stains, and allergens to give your sofas, chairs, and cushions a renewed life.</p>
+      <a href="#contact-form" class="service-hero__button">Book Now</a>
+    </div>
+  </div>
+</section>
+
+<section class="service-details">
+  <div class="container">
+    <h2 class="service-details__title">What is included in upholstery cleaning</h2>
+
+    <div class="service-details__content no-tabs">
+      <img src="{{ url_for('static', filename='images/upholstery_service.jpg') }}" class="service-img" alt="Upholstery Cleaning">
+
+      <div class="service-details__grid">
+        <div class="service-details__item"><p>Vacuuming of upholstery surfaces</p></div>
+        <div class="service-details__item"><p>Spot and stain pre-treatment</p></div>
+        <div class="service-details__item"><p>Deep steam or dry cleaning</p></div>
+        <div class="service-details__item"><p>Deodorizing and odor removal</p></div>
+        <div class="service-details__item"><p>Sanitizing to remove bacteria and allergens</p></div>
+        <div class="service-details__item"><p>Fabric protection treatment (optional)</p></div>
+        <div class="service-details__item"><p>Cleaning of sofas, armchairs, cushions</p></div>
+        <div class="service-details__item"><p>Safe cleaning for delicate fabrics</p></div>
+        <div class="service-details__item"><p>Pet hair and stain removal</p></div>
+        <div class="service-details__item"><p>Quick drying with professional equipment</p></div>
+        <div class="service-details__item"><p>Inspection and final finishing</p></div>
+        <div class="service-details__item"><p>Eco-friendly cleaning products used</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Form -->
+<section class="service-contact" id="contact-form">
+  <div class="container">
+    <div class="service-contact__content">
+      <div class="service-contact__text">
+        <h2>Revive Your Furniture Today</h2>
+        <p>Book our upholstery cleaning service and enjoy refreshed, clean, and comfortable furniture in your home or office.</p>
+        <ul class="service-contact__benefits">
+          <li> Safe for All Types of Upholstery</li>
+          <li> Non-toxic Cleaning Solutions</li>
+          <li> Experienced & Certified Technicians</li>
+          <li> Satisfaction Guaranteed</li>
+        </ul>
+      </div>
+
+      <div class="service-contact__form">
+        <form class="service-form">
+          <h3>Schedule Your Cleaning</h3>
+          <input type="text" placeholder="Your Name" required>
+          <input type="tel" placeholder="Phone Number" required>
+          <button type="submit">Book Now</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% block extra_js %}
+  <script src="{{ url_for('static', filename='js/services.js') }}"></script>
+{% endblock %}
+
+{% endblock %}
