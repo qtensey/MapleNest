@@ -1,53 +1,57 @@
 <!-- Hero Section -->
 <section class="hero" id="hero">
-    <div class="hero__bg">
-        <img src="{{ url_for('static', filename='images/cleaning.png') }}" alt="Clean apartment" class="hero__bg-img">
-        <div class="hero__overlay"></div>
+
+<div class="hero__bg">
+    <img src="{{ url_for('static', filename='images/cleaning.png') }}" alt="Clean apartment" class="hero__bg-img">
+    <div class="hero__overlay"></div>
+</div>
+
+<div class="hero__leaves">
+    <img src="{{ url_for('static', filename='images/maple.png') }}" alt="Maple leaf" class="hero__leaf hero__leaf--1">
+    <img src="{{ url_for('static', filename='images/maple.png') }}" alt="Maple leaf" class="hero__leaf hero__leaf--2">
+    <img src="{{ url_for('static', filename='images/maple.png') }}" alt="Maple leaf" class="hero__leaf hero__leaf--3">
+</div>
+
+<div class="container">
+<div class="hero__content">
+
+    <div class="hero__text">
+        <h1 class="hero__title">Professional Cleaning Services by <span>MapleNest</span></h1>
+        <p class="hero__subtitle">We clean any type of property in just 6-9 hours with guaranteed quality</p>
     </div>
 
-    <div class="hero__leaves">
-        <img src="{{ url_for('static', filename='images/maple.png') }}" alt="Maple leaf" class="hero__leaf hero__leaf--1">
-        <img src="{{ url_for('static', filename='images/maple.png') }}" alt="Maple leaf" class="hero__leaf hero__leaf--2">
-        <img src="{{ url_for('static', filename='images/maple.png') }}" alt="Maple leaf" class="hero__leaf hero__leaf--3">
-    </div>
+    <div class="hero__form">
 
-    <div class="container">
-        <div class="hero__content">
-            <div class="hero__text">
-                <h1 class="hero__title">Professional Cleaning Services by <span>MapleNest</span></h1>
-                <p class="hero__subtitle">We clean any type of property in just 6-9 hours with guaranteed quality</p>
+    <div class="form">
+
+        <h2 class="form__title">Need professional cleaning?</h2>
+        <p class="form__subtitle">Leave a request and we'll contact you within 2 minutes!</p>
+    
+        <form method="POST" action="/order" class="form__inner">
+            
+            <input type="number" name="square" class="form__input" placeholder="Area (m²)" required>
+            
+            <select name="service" class="form__select" required>
+                <option value="" disabled selected>Select service type</option>
+                <option value="apartment_and_house">Apartment / House</option>
+                <option value="office">Office</option>
+                <option value="upholstery_cleaning">Upholstery Cleaning</option>
+                <option value="window">Window Cleaning</option>
+                <option value="repairs">Post-Renovation Cleaning</option>
+                <option value="deep">Deep Cleaning</option>
+                <option value="disinfection">Disinfection</option>
+                <option value="supportive">Maintenance Cleaning</option>
+            </select>
+            
+            <div class="form__row">
+                <input type="text" name="name" class="form__input" placeholder="Your Name" required>
+                <input type="tel" name="phone" class="form__input" placeholder="Phone Number" required>
             </div>
-
-            <div class="hero__form">
-                <div class="form">
-                <h2 class="form__title">Need professional cleaning?</h2>
-                <p class="form__subtitle">Leave a request and we'll contact you within 2 minutes!</p>
-                
-                <form method="POST" action="/order" class="form__inner">
-                    
-                    <input type="number" name="square" class="form__input" placeholder="Area (m²)" required>
-                    
-                    <select name="service" class="form__select" required>
-                    <option value="" disabled selected>Select service type</option>
-                    <option value="apartment_and_house">Apartment / House</option>
-                    <option value="office">Office</option>
-                    <option value="upholstery_cleaning">Upholstery Cleaning</option>
-                    <option value="window">Window Cleaning</option>
-                    <option value="repairs">Post-Renovation Cleaning</option>
-                    <option value="deep">Deep Cleaning</option>
-                    <option value="disinfection">Disinfection</option>
-                    <option value="supportive">Maintenance Cleaning</option>
-                    </select>
-                    
-                    <div class="form__row">
-                    <input type="text" name="name" class="form__input" placeholder="Your Name" required>
-                    <input type="tel" name="phone" class="form__input" placeholder="Phone Number" required>
-                    </div>
-                    
-                    <button type="submit" class="form__button">Request a Quote</button>
-                </form>
-                </div>
-            </div>
-        </div>
+            <button type="submit" class="form__button">Request a Quote</button>
+        </form>
     </div>
+
+    </div>
+</div>
+</div>
 </section>

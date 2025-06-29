@@ -74,7 +74,7 @@ button {
   background-color: var(--white);
   box-shadow: var(--shadow);
   z-index: 1000;
-  padding: 5px 0;
+  padding-top: 5px;
   transition: var(--transition);
 }
 
@@ -219,6 +219,7 @@ button {
 .hero {
   position: relative;
   padding: 150px 0 80px;
+  height: 100vh;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -421,10 +422,12 @@ button {
   box-shadow: 0 4px 15px rgba(255, 157, 72, 0.4);
 }
 
-/* Services Section */
+/* === Services Section === */
+
 .services {
   padding: 100px 0;
   background-color: var(--white);
+  padding-bottom: 200px;
 }
 
 .section-header {
@@ -580,6 +583,120 @@ button {
   }
 }
 
+/* === contact-us section === */
+
+.contact-us {
+  position: relative; /* Для позиционирования телефона */
+  padding: 80px 20px 60px; /* Увеличили верхний отступ */
+  background-color: #f5f5f5;
+  overflow: visible; /* Разрешаем выход элементов за пределы */
+  background-color: #e6893d18;
+}
+
+.contact-us .container {
+  position: relative; /* Для z-index */
+  z-index: 2; /* Поднимаем контент над изображением телефона */
+}
+
+.telephon__svg {
+  position: absolute;
+  width: 400px;
+  height: auto;
+  left: 0;
+  top: 40%;
+  transform: translateY(-50%) translateX(0%);
+  z-index: 1; /* Под основным контентом */
+}
+
+.contact-us__content {
+  display: flex;
+  flex-direction: column;
+  padding-left: 420px;
+  max-width: 1000px;
+}
+
+.contact-us__title {
+  font-size: 36px;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.contact-us__text {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.contact-us__info {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.contact-us__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background-color: #ffffff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 16px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.contact-us__phone-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background-color: var(--primary-color);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 16px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.contact-us__button:hover {
+  background-color: #f5f5f5;
+  transform: translateY(-2px);
+}
+
+.contact-us__phone-button:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.contact-us__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  opacity: 40%;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+  .telephon__svg {
+    width: 300px;
+    opacity: 0.3;
+    transform: translateY(-50%) translateX(10%);
+  }
+  
+  .contact-us__title {
+    font-size: 28px;
+  }
+  
+  .contact-us {
+    padding: 60px 20px;
+  }
+}
+
 /* === footer === */
 
 .footer {
@@ -599,6 +716,12 @@ button {
 .footer__col {
   display: flex;
   flex-direction: column;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
 }
 
 .footer__logo img {
@@ -740,3 +863,8 @@ button {
 }
 
 /* === Cleaning Booking === */
+
+
+.invisible-block {
+  margin-top: 200px; /* Отступ сверху для видимости */
+}
