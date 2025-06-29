@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for maple-nest on 2025-06-29T21:15:34+03:00
+# fly.toml app configuration file generated for maplenest on 2025-06-29T20:55:57Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'maple-nest'
+app = 'maplenest'
 primary_region = 'yyz'
 
 [build]
@@ -20,3 +20,4 @@ primary_region = 'yyz'
   memory = '1gb'
   cpu_kind = 'shared'
   cpus = 1
+  memory_mb = 256
