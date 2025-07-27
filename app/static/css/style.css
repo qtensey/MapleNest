@@ -1,4 +1,3 @@
-/* Base Styles */
 :root {
   --primary-color: #FF9D48;
   --primary-dark: #E68A3D;
@@ -27,6 +26,7 @@ body {
   color: var(--text-color);
   background-color: var(--light-bg);
   line-height: 1.6;
+  max-width: 100vw;
   overflow-x: hidden;
 }
 
@@ -40,6 +40,7 @@ body {
 img {
   max-width: 100%;
   height: auto;
+  display: block;
 }
 
 a {
@@ -54,17 +55,6 @@ button {
   font-family: inherit;
 }
 
-.nav__link.active,
-.mobile-nav__link.active {
-  color: var(--primary-color) !important;
-}
-
-.nav__link.active::after,
-.mobile-nav__link.active::after {
-  width: 100% !important;
-  background-color: var(--primary-color) !important;
-}
-
 /* Header */
 .header {
   position: fixed;
@@ -74,9 +64,11 @@ button {
   background-color: var(--white);
   box-shadow: var(--shadow);
   z-index: 1000;
-  padding-top: 5px;
+  padding: 5px 0;
   transition: var(--transition);
 }
+
+
 
 .header__inner {
   display: flex;
@@ -117,23 +109,35 @@ button {
   transition: var(--transition);
 }
 
-.nav__link:hover {
+.nav__link:hover,
+.nav__link.active {
   color: var(--primary-color);
 }
 
-.nav__link:hover::after {
+.nav__link:hover::after,
+.nav__link.active::after {
   width: 100%;
 }
 
+/* Social Media Icons */
+
 .social {
   display: flex;
-  gap: 15px;
+  align-items: center;
+  gap: 20px;
+}
+
+.social__link {
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: all 0.3s ease;
 }
 
 .social__icon {
   width: 32px;
   height: 32px;
-  transition: var(--transition);
+  transition: all 0.3s ease;
   opacity: 0.8;
 }
 
@@ -142,6 +146,40 @@ button {
   transform: translateY(-2px);
 }
 
+/* Специальные стили для телефонной ссылки */
+.social__link .phone-number {
+  position: absolute;
+  right: 100%; /* Позиционируем слева от иконки */
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(20px); /* Начальное положение (спрятано) */
+  transition: all 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 12px; /* Отступ от иконки */
+  pointer-events: none;
+  margin-top: 5px;
+}
+
+.social__link:hover .phone-number {
+  opacity: 1;
+  transform: translateX(0); /* Плавное появление */
+}
+
+/* Анимация для других иконок */
+.social__link:not(:first-child):hover .social__icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+  .phone-number {
+    display: none;
+  }
+}
+
+/* Burger Menu */
+
 .burger {
   display: none;
   flex-direction: column;
@@ -149,6 +187,7 @@ button {
   width: 30px;
   height: 20px;
   z-index: 1001;
+  cursor: pointer;
 }
 
 .burger__line {
@@ -157,6 +196,18 @@ button {
   height: 2px;
   background-color: var(--text-color);
   transition: var(--transition);
+}
+
+.burger.active .burger__line:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.burger.active .burger__line:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.active .burger__line:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
 }
 
 /* Mobile Menu */
@@ -168,7 +219,7 @@ button {
   height: calc(100vh - 80px);
   background-color: var(--white);
   transform: translateX(100%);
-  transition: var(--transition);
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   display: flex;
   flex-direction: column;
   padding: 40px 20px;
@@ -191,9 +242,23 @@ button {
   font-weight: 500;
   color: var(--text-color);
   transition: var(--transition);
+  transform: translateX(20px);
+  opacity: 0;
 }
 
-.mobile-nav__link:hover {
+.mobile-menu.active .mobile-nav__link {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.mobile-menu.active .mobile-nav__link:nth-child(1) { transition-delay: 0.1s; }
+.mobile-menu.active .mobile-nav__link:nth-child(2) { transition-delay: 0.2s; }
+.mobile-menu.active .mobile-nav__link:nth-child(3) { transition-delay: 0.3s; }
+.mobile-menu.active .mobile-nav__link:nth-child(4) { transition-delay: 0.4s; }
+.mobile-menu.active .mobile-nav__link:nth-child(5) { transition-delay: 0.5s; }
+
+.mobile-nav__link:hover,
+.mobile-nav__link.active {
   color: var(--primary-color);
 }
 
@@ -215,24 +280,21 @@ button {
   transform: scale(1.1);
 }
 
-/* === Hero Section === */
-
+/* Hero Section */
 .hero {
   position: relative;
+  min-height: 100vh;
   padding: 150px 0 80px;
-  height: 100vh;
   display: flex;
-  align-items: center;
-  overflow: hidden;
+  flex-direction: column;
+  justify-content: center;
   z-index: 1;
+  overflow: hidden;
 }
 
 .hero__bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  position: fixed;
+  inset: 0;
   z-index: -2;
 }
 
@@ -240,16 +302,12 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top; /* Фокус сверху */
+  object-position: center;
 }
 
-
 .hero__overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  position: fixed;
+  inset: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: -1;
 }
@@ -275,28 +333,31 @@ button {
   top: 10%;
   left: 5%;
   width: 9%;
-  transform: rotate(-15deg);
-  animation-delay: 0s;
+  --start-rotate: -15deg;
+  animation: float 8s infinite ease-in-out;
 }
 
 .hero__leaf--2 {
   top: 40%;
   left: 15%;
   width: 8%;
-  transform: rotate(10deg);
-  animation-delay: 1s;
+  --start-rotate: 10deg;
+  animation: float 9s infinite ease-in-out 1s;
 }
 
 .hero__leaf--3 {
   top: 70%;
   left: 6%;
   width: 10%;
-  transform: rotate(-5deg);
-  animation-delay: 2s;
+  --start-rotate: -5deg;
+  animation: float 7s infinite ease-in-out 2s;
 }
 
 .hero__content {
+  position: relative;
+  z-index: 2;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 40px;
   align-items: center;
@@ -304,8 +365,9 @@ button {
 
 .hero__text {
   flex: 1;
-  min-width: 300px;
+  min-width: 280px;
   color: var(--white);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
 }
 
 .hero__title {
@@ -321,8 +383,8 @@ button {
 
 .hero__subtitle {
   font-size: 1.2rem;
-  margin-bottom: 30px;
   max-width: 600px;
+  margin-bottom: 30px;
 }
 
 .hero__cards {
@@ -334,9 +396,9 @@ button {
 
 .hero__card {
   display: flex;
-  background-color: rgba(210, 210, 210, 0.792);
+  background-color: rgba(255, 255, 255, 0.8);
   padding: 15px 20px;
-  width: 180px;
+  min-width: 180px;
   height: 60px;
   align-items: center;
   justify-content: center;
@@ -354,8 +416,8 @@ button {
 
 .hero__form {
   flex: 1;
-  min-width: 300px;
-  max-width: 450px;
+  min-width: 280px;
+  max-width: 460px;
 }
 
 .form {
@@ -368,7 +430,7 @@ button {
 
 .form__title {
   color: var(--primary-color);
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   margin-bottom: 10px;
 }
 
@@ -390,7 +452,7 @@ button {
   padding: 12px 15px;
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.95);
   font-size: 1rem;
   transition: var(--transition);
 }
@@ -400,11 +462,13 @@ button {
   outline: none;
   border-color: var(--primary-color);
   box-shadow: 0 0 0 2px rgba(255, 157, 72, 0.3);
+  transform: translateY(-2px);
 }
 
 .form__row {
   display: flex;
   gap: 15px;
+  flex-wrap: wrap;
 }
 
 .form__button {
@@ -416,20 +480,84 @@ button {
   font-size: 1.1rem;
   transition: var(--transition);
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .form__button:hover {
   background-color: var(--primary-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(255, 157, 72, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(255, 157, 72, 0.3);
 }
 
-/* === Services Section === */
+.form__button:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform .5s, opacity 1s;
+}
+
+.form__button:active:after {
+  transform: scale(0, 0);
+  opacity: .3;
+  transition: 0s;
+}
+
+/* --- Services Section --- */
+
+.maple-leaf {
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  width: 120px;
+  height: auto;
+  opacity: 0.4;
+  transform: rotate(-40deg) scale(1);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.service-card:hover .maple-leaf {
+  transform: translate(25px, 35px) rotate(-80deg) scale(1.6);
+  opacity: 0.6;
+}
+
+.maple-text {
+  position: absolute;
+  font-size: 16px;
+  font-weight: bold;
+  color: #7b5228;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+  transform: rotate(90deg) scale(1);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.service-card:hover .maple-text {
+  transform: translate(30px, 40px) rotate(0deg) scale(1.6);
+  opacity: 0.8;
+}
 
 .services {
+  position: relative;
   padding: 100px 0;
   background-color: var(--white);
-  padding-bottom: 200px;
+  z-index: 1;
+  padding-bottom: 150px;
 }
 
 .section-header {
@@ -458,26 +586,38 @@ button {
 }
 
 .service-card {
+  position: relative;
+  overflow: hidden; /* не даем листу полностью вылезти сразу */
+  z-index: 1;
+
   background-color: var(--white);
   border-radius: 12px;
   padding: 30px;
   box-shadow: var(--shadow);
-  transition: var(--transition);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.service-card.animate {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
 }
 
 .service-card__icon {
   font-size: 3.5rem;
   margin-bottom: 20px;
   transition: var(--transition);
+  color: var(--primary-color);
 }
 
 .service-card:hover .service-card__icon {
@@ -505,116 +645,81 @@ button {
   border-radius: 6px;
   font-weight: 500;
   transition: var(--transition);
+  position: relative;
+  overflow: hidden;
 }
 
 .service-card__button:hover {
   background-color: var(--primary-dark);
   transform: translateY(-3px);
-  box-shadow: 0 4px 15px rgba(255, 157, 72, 0.3);
+  box-shadow: 0 7px 14px rgba(255, 157, 72, 0.3);
 }
 
-/* Animations */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0) rotate(-15deg);
-  }
-  50% {
-    transform: translateY(-20px) rotate(-10deg);
-  }
+.service-card__button:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform .5s, opacity 1s;
 }
 
-/* Responsive Styles */
-@media (max-width: 992px) {
-  .nav {
-    gap: 20px;
-  }
+.service-card__button:active:after {
+  transform: scale(0, 0);
+  opacity: .3;
+  transition: 0s;
 }
 
-@media (max-width: 768px) {
-  .nav,
-  .social {
-    display: none;
-  }
-  
-  .burger {
-    display: flex;
-  }
-  
-  .hero {
-    padding: 120px 0 60px;
-  }
-  
-  .hero__content {
-    flex-direction: column;
-  }
-  
-  .hero__text {
-    text-align: center;
-  }
-  
-  .hero__cards {
-    justify-content: center;
-  }
-  
-  .form__row {
-    flex-direction: column;
-    gap: 15px;
-  }
-}
-
-@media (max-width: 576px) {
-  .hero__title {
-    font-size: 2.2rem;
-  }
-  
-  .hero__subtitle {
-    font-size: 1rem;
-  }
-  
-  .hero__card {
-    font-size: 0.8rem;
-    padding: 8px 12px;
-  }
-  
-  .form {
-    padding: 25px 20px;
-  }
-  
-  .section-title {
-    font-size: 2rem;
-  }
-}
-
-/* === contact-us section === */
+/* --- Contact Us Section --- */
 
 .contact-us {
-  position: relative; /* Для позиционирования телефона */
-  padding: 80px 20px 60px; /* Увеличили верхний отступ */
-  background-color: #f5f5f5;
-  overflow: visible; /* Разрешаем выход элементов за пределы */
-  background-color: #e6893d18;
+  position: relative;
+  padding: 80px 20px 40px;
+  background-color: #fbf3ec;
+  overflow: visible;
+  z-index: 2;
+  box-shadow: 
+    0 -4px 12px rgba(0, 0, 0, 0.08), /* Тень сверху */
+    0 4px 12px rgba(0, 0, 0, 0.08);   /* Тень снизу */
 }
 
 .contact-us .container {
-  position: relative; /* Для z-index */
-  z-index: 2; /* Поднимаем контент над изображением телефона */
+  max-width: 1200px; /* Было 1400px, что могло вызывать скролл */
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
 }
 
 .telephon__svg {
   position: absolute;
   width: 400px;
+  max-width: 100%; /* Добавьте это */
   height: auto;
   left: 0;
-  top: 40%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-20%);
+  z-index: 2;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.contact-us.visible .telephon__svg {
   transform: translateY(-50%) translateX(0%);
-  z-index: 1; /* Под основным контентом */
+  opacity: 1;
 }
 
 .contact-us__content {
-  display: flex;
-  flex-direction: column;
-  padding-left: 420px;
-  max-width: 1000px;
+  position: relative; /* Поднимаем над изображением */
+  z-index: 10;
+  padding-left: 420px; /* Отступ для изображения */
 }
 
 .contact-us__title {
@@ -641,12 +746,12 @@ button {
   gap: 10px;
   padding: 12px 20px;
   background-color: #ffffff;
-  color: #fff;
+  color: var(--text-color);
   text-decoration: none;
   border-radius: 12px;
   font-weight: 500;
   font-size: 16px;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
@@ -661,7 +766,7 @@ button {
   border-radius: 12px;
   font-weight: 500;
   font-size: 16px;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
@@ -679,33 +784,17 @@ button {
   width: 20px;
   height: 20px;
   flex-shrink: 0;
-  opacity: 40%;
+  opacity: 0.4;
 }
 
-/* Адаптация для мобильных */
-@media (max-width: 768px) {
-  .telephon__svg {
-    width: 300px;
-    opacity: 0.3;
-    transform: translateY(-50%) translateX(10%);
-  }
-  
-  .contact-us__title {
-    font-size: 28px;
-  }
-  
-  .contact-us {
-    padding: 60px 20px;
-  }
-}
-
-/* === footer === */
+/* --- Footer ---*/
 
 .footer {
   background-color: #2a2a2a;
   color: #ffffff;
   padding: 60px 0 0;
   position: relative;
+  z-index: 1;
 }
 
 .footer__grid {
@@ -718,12 +807,14 @@ button {
 .footer__col {
   display: flex;
   flex-direction: column;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
 }
 
-.navigation {
-  display: flex;
-  flex-direction: column;
-  margin-left: 30px;
+.footer__col.animate {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .footer__logo img {
@@ -789,7 +880,6 @@ button {
 
 .footer__links a:hover {
   color: var(--primary-color);
-  text-decoration: none;
 }
 
 .footer__contacts {
@@ -845,7 +935,95 @@ button {
   color: var(--primary-color);
 }
 
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(var(--start-rotate));
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+  }
+  50% {
+    transform: translateY(-30px) rotate(calc(var(--start-rotate) + 5deg));
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.15));
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .contact-us__content {
+    padding-left: 350px;
+  }
+  
+  .telephon__svg {
+    width: 350px;
+    left: -30px;
+  }
+}
+
+@media (max-width: 992px) {
+  .nav {
+    gap: 20px;
+  }
+
+  .hero__form {
+    min-width: 400px;
+    justify-content: center;
+    align-self: center;
+  }
+
+  .telephon__svg {
+    left: 20%;
+    top: -35%;
+    transform: translateX(-50%) translateY(0);
+  }
+  
+  .contact-us.visible .telephon__svg {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
 @media (max-width: 768px) {
+  .nav,
+  .social {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .hero {
+    padding: 120px 0 40px;
+  }
+
+  .hero__bg-img {
+    filter: blur(5px);
+    transform: scale(1.05);
+  }
+
+  .hero__text {
+    text-align: left;
+  }
+
+  .hero__form {
+    min-width: 80px;
+  }
+
+  .hero__cards {
+    justify-content: center;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
   .footer__grid {
     grid-template-columns: 1fr 1fr;
     gap: 30px;
@@ -856,17 +1034,98 @@ button {
     gap: 10px;
     text-align: center;
   }
+
+  .telephon__svg {
+    left: 20%;
+    top: -20%;
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
+
+  .hero__title {
+    font-size: 1.8rem;
+  }
+
+  .hero__subtitle {
+    font-size: 0.95rem;
+  }
+
+  .hero__card {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+    min-width: 140px;
+    height: 50px;
+  }
+
+  .form {
+    padding: 25px 20px;
+  }
+
+  .form__button {
+    font-size: 1rem;
+    padding: 12px;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .telephon__svg {
+    display: none;
+  }
+
+  .contact-us__content {
+    padding-left: 0;
+    text-align: left;
+  }
+
+  .contact-us__title {
+    font-size: 28px;
+    margin-top: -40px;
+  }
+  
+  .contact-us__text {
+    font-size: 16px;
+  }
+
   .footer__grid {
     grid-template-columns: 1fr;
   }
 }
 
-/* === Cleaning Booking === */
+@media (max-width: 400px) {
+  .hero__cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero__card {
+    width: 100%;
+  }
+  
+  .contact-us__info {
+    flex-direction: column;
+  }
+  
+  .contact-us__button,
+  .contact-us__phone-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .telephon__svg {
+    display: none;
+  }
+}
+
 
 
 .invisible-block {
-  margin-top: 200px; /* Отступ сверху для видимости */
+  position: relative;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  z-index: 1;
+  height: 150px;
 }

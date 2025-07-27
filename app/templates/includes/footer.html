@@ -26,9 +26,9 @@
             <h3 class="footer__title">Navigation</h3>
             <ul class="footer__links">
                 <li><a href="#hero">Home</a></li>
-                <li><a href="#about">About Us</a></li>
+                <!-- <li><a href="#about">About Us</a></li> -->
                 <li><a href="#services">Services</a></li>
-                <li><a href="#reviews">Reviews</a></li>
+                <!-- <li><a href="#reviews">Reviews</a></li> -->
                 <li><a href="#contacts">Contacts</a></li>
             </ul>
         </div>
@@ -36,11 +36,14 @@
         <div class="footer__col">
             <h3 class="footer__title">Services</h3>
             <ul class="footer__links">
-                <li><a href="/upholstery-cleaning">Upholstery Cleaning</a></li>
-                <li><a href="/window-cleaning">Window Cleaning</a></li>
-                <li><a href="/post-renovation">Post-Renovation</a></li>
-                <li><a href="/deep-cleaning">Deep Cleaning</a></li>
-                <li><a href="/disinfection">Disinfection</a></li>
+                <li><a href="{{ url_for('main.service', service_name='apartment') }}">Apartment / House</a></li>
+                <li><a href="{{ url_for('main.service', service_name='office') }}">Office</a></li>
+                <li><a href="{{ url_for('main.service', service_name='upholstery') }}">Upholstery Cleaning</a></li>
+                <li><a href="{{ url_for('main.service', service_name='window') }}">Window Cleaning</a></li>
+                <li><a href="{{ url_for('main.service', service_name='post_renovation') }}">Post-Renovation Cleaning</a></li>
+                <li><a href="{{ url_for('main.service', service_name='deep') }}">Deep Cleaning</a></li>
+                <li><a href="{{ url_for('main.service', service_name='disinfection') }}">Disinfection</a></li>
+                <li><a href="{{ url_for('main.service', service_name='maintenance') }}">Maintenance Cleaning</a></li>
             </ul>
         </div>
 
@@ -49,7 +52,7 @@
             <ul class="footer__contacts">
             <li>
                 <img src="{{ url_for('static', filename='icons/map-pin.svg') }}" alt="Address">
-                <span>123 Clean St, Toronto, Canada</span>
+                <span>Winnipeg</span>
             </li>
             <li>
                 <img src="{{ url_for('static', filename='icons/phone.svg') }}" alt="Phone">
@@ -73,6 +76,7 @@
         <div class="footer__legal">
             <a href="/privacy">Privacy Policy</a>
             <a href="/terms">Terms of Service</a>
+            <a href="{{ url_for('main.admin_login') }}">[]</a>
         </div>
         </div>
     </div>

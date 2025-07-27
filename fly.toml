@@ -13,3 +13,10 @@ processes = [ "app" ]
 cpu_kind = "shared"
 cpus = 1
 memory_mb = 256
+
+[mounts]
+  source = "data_volume"
+  destination = "/data"
+
+[processes]
+app = "gunicorn -b 0.0.0.0:8080 wsgi:app"

@@ -2,7 +2,7 @@
 <section class="hero" id="hero">
 
 <div class="hero__bg">
-    <img src="{{ url_for('static', filename='images/cleaning.png') }}" alt="Clean apartment" class="hero__bg-img">
+    <img src="{{ url_for('static', filename='images/cleaning.png') }}" alt="Cleaning" class="hero__bg-img">
     <div class="hero__overlay"></div>
 </div>
 
@@ -29,7 +29,7 @@
     
         <form method="POST" action="/order" class="form__inner">
             
-            <input type="number" name="square" class="form__input" placeholder="Area (m²)" required>
+            <input type="number" name="square" class="form__input" placeholder="Area (ft²)" required>
             
             <select name="service" class="form__select" required>
                 <option value="" disabled selected>Select service type</option>

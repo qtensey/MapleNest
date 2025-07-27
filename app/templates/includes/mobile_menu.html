@@ -8,14 +8,18 @@
         <a href="#contacts" class="mobile-nav__link">Contacts</a>
     </nav>
     <div class="mobile-social">
+
+        <a href="tel:+14313380909" target="_blank" class="mobile-social__link">
+            <img src="{{ url_for('static', filename='icons/call.svg') }}" alt="phone_num" class="mobile-social__icon">
+        </a>
+
+        <a href="https://wa.me/+14313380909" target="_blank" class="mobile-social__link">
+            <img src="{{ url_for('static', filename='icons/social_networks/whatsapp.svg') }}" alt="WhatsApp" class="mobile-social__icon">
+        </a>
+
         <a href="https://facebook.com" target="_blank" class="mobile-social__link">
-        <img src="{{ url_for('static', filename='icons/facebook.svg') }}" alt="Facebook" class="mobile-social__icon">
+            <img src="{{ url_for('static', filename='icons/social_networks/facebook.svg') }}" alt="Facebook" class="mobile-social__icon">
         </a>
-        <a href="https://instagram.com" target="_blank" class="mobile-social__link">
-        <img src="{{ url_for('static', filename='icons/instagram.svg') }}" alt="Instagram" class="mobile-social__icon">
-        </a>
-        <a href="https://t.me/ваш_телеграм" target="_blank" class="mobile-social__link">
-        <img src="{{ url_for('static', filename='icons/telegram.svg') }}" alt="Telegram" class="mobile-social__icon">
-        </a>
+
     </div>
 </div>
